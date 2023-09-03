@@ -23,19 +23,19 @@
     <div class="bg-secondary opacity-75 rounded p-5">
         <form name="formOne" novalidate>
 
-            <div class="mb-3 row">
+            <div class="mb-3 container row">
                 <label class="text-light col" for="name">Name [2 to 20 characters] :</label>
                 <input class="form-control col" name="name" type="text" id="name" placeholder="Enter your name" minlength="2" maxlength="20" required />
                 <span class="error-message col" id="text-error_1"></span>
             </div>
     
-            <div class="mb-3 row">
+            <div class="mb-3 container row">
                 <label class="text-light col" for="email">Email:</label>
                 <input class="form-control col" name="email" type="email" id="email" placeholder="Enter your email" required />
                 <span class="error-message col" id="text-error_2"></span>
             </div>
     
-            <div class="mb-3 row">
+            <div class="mb-3 container row">
                 <div class="text-light col">Choose your gender:</div>
     
                 <div class="col d-flex gap-2">
@@ -47,7 +47,7 @@
                 <span class="error-message col" id="text-error_3"></span>
             </div>
 
-            <div class="mb-3 row">
+            <div class="mb-3 container row">
                 <label class="text-light col" for="professions">Your profession:</label>
                 <select class="form-control col text-secondary" id="professions" name="professions" aria-placeholder="Choose your profession" required >*
                     <option selected="" value="Default">(Please select a profession)</option>
@@ -63,28 +63,29 @@
             </div>
         </form>
     
-        <form name="formTwo">
-            <div class="mb-3 row">
+        <form name="formTwo" novalidate>
+            <div class="mb-3 container row">
                 <label class="text-light col" for="password">Password <br> [min 8 characters, (Aa1) ] :</label>
                 <input class="form-control col" type="password" id="password" name="password" placeholder="Enter your password" minlength="8" pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*()]{8,20}$/" required />
                 <span class="error-message col" id="text-error_5"></span>
             </div>
     
-            <div class="mb-3 row">
+            <div class="mb-3 container row">
                 <label class="text-light col" for="repeatPassword">Repeat your password <br> [min 8 characters, (Aa1) ] :</label>
                 <input class="form-control col" type="password" id="repeatPassword" name="repeatPassword" placeholder="Repeat your password" minlength="8" pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*()]{8,20}$/" required />
                 <span class="error-message col" id="text-error_6"></span>
             </div>
         </form>
                 
-        <form name="formThree">
+        <form name="formThree" class="container" novalidate>
             <div class="mb-3 d-flex justify-content-center gap-2">
                 <input class="text-light form-check-input" type="checkbox" id="agreement" name="agreement" value="agreement" required/>
                 <label class="text-light" for="agreement">I agree with the privacy policy.</label>
+                <span class="error-message col" id="text-error_7"></span>
             </div>
     
             <div class="mb-3 d-flex justify-content-center">
-                <button class="btn btn-success" type="submit" onclick="alert('Form submitted successfully')">Submit</button>
+                <button class="btn btn-success" type="submit" name="submit">Submit</button>
             </div>
         </form>
     </div>
