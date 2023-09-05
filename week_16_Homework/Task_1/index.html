@@ -17,22 +17,22 @@
 </head>
 
 <body class="container bg-light m-5">
-    <h1 class="text-dark opacity-75">Registration form <br> with validation of all fields</h1>
+    <h1 class="text-dark opacity-75">Registration form with validation of all fields</h1>
     
     <!-- 'novalidate' - Disable browser validation and use JavaScript-based custom validation -->
-    <div class="bg-secondary opacity-75 rounded p-5">
-        <form name="formOne" novalidate>
+    <div class="main-container bg-secondary opacity-75 rounded p-5">
+        <form name="formOne" id="formOne" novalidate>
 
             <div class="mb-3 container row">
-                <label class="text-light col" for="name">Name [2 to 20 characters] :</label>
+                <label class="text-light col" for="name">Username [2 to 20 characters] :</label>
                 <input class="form-control col" name="name" type="text" id="name" placeholder="Enter your name" minlength="2" maxlength="20" required />
-                <span class="error-message col" id="text-error_1"></span>
+                <span class="error-message col text-warning fw-semibold" id="text-error_1"></span>
             </div>
     
             <div class="mb-3 container row">
                 <label class="text-light col" for="email">Email:</label>
                 <input class="form-control col" name="email" type="email" id="email" placeholder="Enter your email" required />
-                <span class="error-message col" id="text-error_2"></span>
+                <span class="error-message col text-warning fw-semibold" id="text-error_2"></span>
             </div>
     
             <div class="mb-3 container row">
@@ -44,7 +44,7 @@
                     <input class="form-check-input" type="radio" id="gender2" name="gender" value="female" />
                     <label class="text-light" for="gender2">Female</label>
                 </div>
-                <span class="error-message col" id="text-error_3"></span>
+                <span class="error-message col text-warning fw-semibold" id="text-error_3"></span>
             </div>
 
             <div class="mb-3 container row">
@@ -59,29 +59,33 @@
                     <option value="salesperson">Salesperson</option>
                     <option value="other">Other</option>
                 </select>
-                <span class="error-message col" id="text-error_4"></span>
+                <span class="error-message col text-warning fw-semibold" id="text-error_4"></span>
             </div>
         </form>
     
-        <form name="formTwo" novalidate>
+        <form name="formTwo" id="formTwo" novalidate>
             <div class="mb-3 container row">
                 <label class="text-light col" for="password">Password <br> [min 8 characters, (Aa1) ] :</label>
-                <input class="form-control col" type="password" id="password" name="password" placeholder="Enter your password" minlength="8" pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*()]{8,20}$/" required />
-                <span class="error-message col" id="text-error_5"></span>
+                <input class="form-control col" type="password" id="password" name="password" placeholder="Enter your password" required />
+                <!-- minlength="8" pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*()]{8,20}$/" -->
+                <span class="error-message col text-warning fw-semibold" id="text-error_5"></span>
             </div>
     
             <div class="mb-3 container row">
-                <label class="text-light col" for="repeatPassword">Repeat your password <br> [min 8 characters, (Aa1) ] :</label>
+                <label class="text-light col" for="repeatPassword">Confirm Password <br> [min 8 characters, (Aa1) ] :</label>
                 <input class="form-control col" type="password" id="repeatPassword" name="repeatPassword" placeholder="Repeat your password" minlength="8" pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*()]{8,20}$/" required />
-                <span class="error-message col" id="text-error_6"></span>
+                <span class="error-message col text-warning fw-semibold" id="text-error_6"></span>
             </div>
         </form>
                 
-        <form name="formThree" class="container" novalidate>
-            <div class="mb-3 d-flex justify-content-center gap-2">
-                <input class="text-light form-check-input" type="checkbox" id="agreement" name="agreement" value="agreement" required/>
-                <label class="text-light" for="agreement">I agree with the privacy policy.</label>
-                <span class="error-message col" id="text-error_7"></span>
+        <form name="formThree" id="formThree" class="container" novalidate>
+            <div class="mb-3 container row">
+                <div class="col"></div>
+                <div class="col">
+                    <input class="text-light form-check-input" type="checkbox" id="agreement" name="agreement" value="agreement" required/>
+                    <label class="text-light" for="agreement">I agree with the privacy policy.</label>
+                </div>
+                <div class="error-message col text-warning fw-semibold" id="text-error_7"></div>
             </div>
     
             <div class="mb-3 d-flex justify-content-center">
