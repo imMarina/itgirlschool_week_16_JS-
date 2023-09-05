@@ -23,13 +23,13 @@
     <div class="main-container bg-secondary opacity-75 rounded p-5">
         <form name="formOne" id="formOne" novalidate>
 
-            <div class="mb-3 container row">
+            <div class="form-field mb-3 container row">
                 <label class="text-light col" for="name">Username [2 to 20 characters] :</label>
                 <input class="form-control col" name="name" type="text" id="name" placeholder="Enter your name" minlength="2" maxlength="20" required />
                 <span class="error-message col text-warning fw-semibold" id="text-error_1"></span>
             </div>
     
-            <div class="mb-3 container row">
+            <div class="form-field mb-3 container row">
                 <label class="text-light col" for="email">Email:</label>
                 <input class="form-control col" name="email" type="email" id="email" placeholder="Enter your email" required />
                 <span class="error-message col text-warning fw-semibold" id="text-error_2"></span>
@@ -38,7 +38,7 @@
             <div class="mb-3 container row">
                 <div class="text-light col">Choose your gender:</div>
     
-                <div class="col d-flex gap-2">
+                <div class="form-field col d-flex gap-2">
                     <input class="form-check-input" type="radio" id="gender1" name="gender" value="male" />
                     <label class="text-light" for="gender1">Male</label>
                     <input class="form-check-input" type="radio" id="gender2" name="gender" value="female" />
@@ -47,7 +47,7 @@
                 <span class="error-message col text-warning fw-semibold" id="text-error_3"></span>
             </div>
 
-            <div class="mb-3 container row">
+            <div class="form-field mb-3 container row">
                 <label class="text-light col" for="professions">Your profession:</label>
                 <select class="form-control col text-secondary" id="professions" name="professions" aria-placeholder="Choose your profession" required >*
                     <option selected="" value="Default">(Please select a profession)</option>
@@ -64,16 +64,16 @@
         </form>
     
         <form name="formTwo" id="formTwo" novalidate>
-            <div class="mb-3 container row">
+            <div class="form-field mb-3 container row">
                 <label class="text-light col" for="password">Password <br> [min 8 characters, (Aa1) ] :</label>
-                <input class="form-control col" type="password" id="password" name="password" placeholder="Enter your password" required />
+                <input class="form-control col" type="password" id="password" name="password" placeholder="Enter your password" autocomplete="off" required />
                 <!-- minlength="8" pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*()]{8,20}$/" -->
                 <span class="error-message col text-warning fw-semibold" id="text-error_5"></span>
             </div>
     
-            <div class="mb-3 container row">
+            <div class="form-field mb-3 container row">
                 <label class="text-light col" for="repeatPassword">Confirm Password <br> [min 8 characters, (Aa1) ] :</label>
-                <input class="form-control col" type="password" id="repeatPassword" name="repeatPassword" placeholder="Repeat your password" minlength="8" pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*()]{8,20}$/" required />
+                <input class="form-control col" type="password" id="repeatPassword" name="repeatPassword" placeholder="Repeat your password" minlength="8" autocomplete="off" required />
                 <span class="error-message col text-warning fw-semibold" id="text-error_6"></span>
             </div>
         </form>
@@ -81,7 +81,7 @@
         <form name="formThree" id="formThree" class="container" novalidate>
             <div class="mb-3 container row">
                 <div class="col"></div>
-                <div class="col">
+                <div class="form-field col">
                     <input class="text-light form-check-input" type="checkbox" id="agreement" name="agreement" value="agreement" required/>
                     <label class="text-light" for="agreement">I agree with the privacy policy.</label>
                 </div>
