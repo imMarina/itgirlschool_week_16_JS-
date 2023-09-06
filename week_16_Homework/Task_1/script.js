@@ -9,71 +9,31 @@ const textErrorSelect = main.querySelector("#text-error_4");
 const textErrorPassword = main.querySelector("#text-error_5");
 const textErrorRepeatPassword = main.querySelector("#text-error_6");
 const textErrorCheckbox = main.querySelector("#text-error_7");
-
 // Checking of all the elements
 // console.log(textErrorName, textErrorEmail, textErrorGender, textErrorSelect, textErrorPassword, textErrorRepeatPassword, textErrorCheckbox);
 
-
 // FORMS
-let collection = document.forms;
-
-// Form ELEMENTS
-let username = collection.formOne.name;
-let email = collection.formOne.email;
-let radioBtn = collection.formOne.gender;
-let selectOption = collection.formOne.professions;
-let password = collection.formTwo.password;
-let repeatPassword = collection.formTwo.repeatPassword;
-let checkbox = collection.formThree.agreement;
-let submit = collection.formThree.submit;
-
-// Checking of all the elements
-// console.log(collection);
-// console.log(username, email, radioBtn, selectOption, password, repeatPassword, checkbox, submit);
+const collection = document.forms;
+// FORMS - elements
+const username = collection.formOne.name;
+const email = collection.formOne.email;
+const password = collection.formTwo.password;
+const repeatPassword = collection.formTwo.repeatPassword;
 
 
 main.addEventListener('submit', function (event) {
     // prevent the form from submitting
     event.preventDefault();
-
     // Delete errors
     clearError();
 
     // validate fields
-    const valueName = username.value.trim();
-    checkUsername(valueName);
+    const valueName = checkUsername();
+    const valueEmail = checkEmail();
+    const valuePassword = checkPassword();
+    const valueRepeatPassword = checkConfirmPassword();
 
-    const valueEmail = email.value.trim();
-    checkEmail(valueEmail);
-
-    const valuePassword = password.value.trim();
-    checkPassword(valuePassword);
-
-    const valueRepeatPassword = repeatPassword.value.trim();
-    checkConfirmPassword(valueRepeatPassword);
-
-    if (radioBtn.checked === true) {
-        textErrorGender.textContent = ""
-		console.log("Button selected");
-	} else {
-		textErrorGender.textContent = "Button not selected";
-		console.log("Button not selected");
-	}
-
-    if (selectOption.selected === true) {
-        textErrorSelect.textContent = ""
-		console.log("Button selected");
-    } else {
-        textErrorSelect.textContent = "Please select a profession";
-        console.log("Button not selected");
-    }
-
-    if (checkbox.checked === true) {
-		console.log("Button selected");
-	} else {
-		textErrorCheckbox.textContent = "Button not selected";
-		console.log("Button not selected");
-	}
+    checkButtons();
 
 });
 
@@ -85,7 +45,7 @@ const checkUsername = () => {
 
     if (isInputEmpty(valueName)) {
         textErrorName.textContent = "Please enter your name";
-    } else if (!isLengthMinMax(valueName.length, min, max)) {
+    } else if (isLengthMinMax(valueName, min, max)) {
         textErrorName.textContent = `Username must be between ${min} and ${max} characters.`;
     } else {
         textErrorName.classList.remove('text-warning');
@@ -151,6 +111,42 @@ const checkConfirmPassword = () => {
     return valueRepeatPassword;
 };
 
+function checkButtons() {
+    const radioBtn = collection.formOne.gender;
+    const selectOption = collection.formOne.professions;
+    const checkbox = collection.formThree.agreement;
+
+    if (radioBtn.value === "") {
+        textErrorGender.textContent = "Please select a gender";
+    }
+
+    if (selectOption.value === "Default") {
+        textErrorSelect.textContent = "Please select a profession";
+    }
+
+    if (!checkbox.checked) {
+        textErrorCheckbox.textContent = "Please accept the terms and conditions";
+    }
+
+    if (radioBtn.value !== "") {
+        textErrorGender.classList.remove('text-warning');
+        textErrorGender.classList.add('text-dark');
+        textErrorGender.textContent = "Button selected";
+    }
+
+    if (selectOption.value !== "Default") {
+        textErrorSelect.classList.remove('text-warning');
+        textErrorSelect.classList.add('text-dark');
+        textErrorSelect.textContent = "Button selected";
+    }
+
+    if (checkbox.checked) {
+        textErrorCheckbox.classList.remove('text-warning');
+        textErrorCheckbox.classList.add('text-dark');
+        textErrorCheckbox.textContent = "Button selected";
+    }
+
+}
 
 // isInputEmpty(value) function returns true if the input argument is empty:
 function isInputEmpty(value) {
@@ -191,10 +187,8 @@ function clearError() {
     textErrorCheckbox.textContent = "";
 }
 
-
 /* 
 Password RegEx	    Meaning
-
 ^	                The password starts
 (?=.*[a-z])	        The password must contain at least one lowercase character
 (?=.*[A-Z])	        The password must contain at least one uppercase character
@@ -202,4 +196,3 @@ Password RegEx	    Meaning
 (?=.*[!@#$%^&*])	The password must contain at least one special character
 (?=.{8,})	        The password must be eight characters or longer
 */
-
